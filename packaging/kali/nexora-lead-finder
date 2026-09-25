@@ -1,0 +1,16 @@
+#!/bin/sh
+# Starts the local dashboard for the current Linux user and opens it locally.
+set -eu
+
+APP_ROOT="/opt/nexora-lead-finder"
+DATA_ROOT="${XDG_DATA_HOME:-$HOME/.local/share}/nexora-lead-finder"
+mkdir -p "$DATA_ROOT"
+export NEXORA_DATA_DIR="$DATA_ROOT"
+export NEXORA_HOST="127.0.0.1"
+export NEXORA_PORT="5000"
+
+"$APP_ROOT/nexora-lead-finder" "$@" &
+APP_PID=$!
+sleep 1
+xdg-open "http://127.0.0.1:5000" >/dev/null 2>&1 || true
+wait "$APP_PID"

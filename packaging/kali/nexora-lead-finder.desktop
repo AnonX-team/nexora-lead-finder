@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Nexora Lead Finder
+Comment=Local public-business lead research dashboard
+Exec=nexora-lead-finder
+Terminal=false
+Categories=Office;Network;
